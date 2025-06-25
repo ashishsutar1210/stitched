@@ -3,7 +3,12 @@ const User = require('../models/User');
 // Get all users
 exports.getUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const { search, limit = 15 } = req.query;
+    let query = {};
+    if (search) {
+      query.name = { $regex: search, $options: 'i' };
+    }
+    const users = await User.find(query).limit(parseInt(limit));
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: err.message });

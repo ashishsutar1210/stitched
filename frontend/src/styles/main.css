@@ -89,6 +89,13 @@ body {
   color: var(--accent);
   text-decoration: underline;
 }
+.navbar-user {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5em;
+  color: var(--accent);
+  font-weight: 500;
+}
 .theme-toggle {
   margin-left: 18px;
   background: var(--card-bg);
@@ -210,6 +217,29 @@ body {
   color: var(--accent);
   font-weight: 600;
 }
+.user-list td button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.2s, color 0.2s;
+  margin-right: 5px;
+}
+.btn-edit {
+  background-color: var(--accent);
+  color: white;
+}
+.btn-edit:hover {
+  background-color: #5a52d1;
+}
+.btn-delete {
+  background-color: var(--danger);
+  color: white;
+}
+.btn-delete:hover {
+  background-color: #a5281b;
+}
 .user-list .thumb {
   width: 40px;
   height: 40px;
@@ -217,6 +247,7 @@ body {
   border-radius: 4px;
   margin-right: 4px;
   border: 1.5px solid var(--accent);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
 }
 .measurements label {
   font-weight: bold;
@@ -335,6 +366,11 @@ body {
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 768px) {
+  .user-list {
+    overflow-x: auto;
+  }
+}
 .dark-mode .navbar {
   background: rgba(35,39,47,0.96);
   color: var(--primary-text);
@@ -406,4 +442,136 @@ body {
   color: var(--primary-text);
   border-top: 1.5px solid var(--border);
   box-shadow: 0 -2px 12px rgba(0,0,0,0.18);
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-images .thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1.5px solid var(--accent);
+  transition: transform 0.2s;
+}
+
+.modal-images .thumb:hover {
+  transform: scale(1.05);
+}
+
+.soon-users {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 18px;
+  border: 1px solid var(--highlight);
+}
+
+.soon-users h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: var(--highlight);
+  font-weight: 600;
+}
+
+.soon-users-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-soon {
+  background: transparent;
+  border: 1px solid var(--highlight);
+  color: var(--highlight);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-soon:hover {
+  background: var(--highlight);
+  color: var(--primary-text);
+}
+
+.image-preview-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100; /* Higher than other modals */
+}
+
+.image-preview-content {
+  position: relative;
+  max-width: min(90vw, 700px);
+  max-height: 85vh;
+}
+
+.image-preview-content img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 5px;
+}
+
+.image-preview-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  border: none;
+  background: white;
+  color: black;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 } 
