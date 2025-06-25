@@ -24,7 +24,8 @@ exports.loginAdmin = async (req, res) => {
     const match = await bcrypt.compare(password, admin.password);
     if (!match) return res.status(400).json({ error: 'Invalid credentials' });
     const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    res.json({ token });
+    res.json({ token, name: admin.username });
+    
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
